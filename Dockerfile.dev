@@ -1,0 +1,15 @@
+# Specify image
+FROM node:16-alpine
+
+# Specify workdir in Docker
+WORKDIR '/app'
+
+# Reload npm install only if package.json changes
+COPY package.json .
+RUN npm install
+
+# Copy from local to Docker
+COPY . .
+
+# Command to start app 
+CMD [ "npm", "run", "start" ]
